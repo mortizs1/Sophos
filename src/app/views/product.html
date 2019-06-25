@@ -1,0 +1,130 @@
+<section class="categorias">
+    <div class="titulo">
+        <h1>Todos nuestros productos!</h1>
+        <div class="divider"></div>
+    </div>
+    <div class="wrapper">
+        <div *ngIf="!productos">
+            <h1>Cargando listado de productos...</h1>
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div *ngFor="let producto of productos; let i = index">
+            <div class="parent">
+                <div class="child">
+                    <img src="{{producto.imagen}}" alt="Imagen producto {{i+1}}">
+                    <a href="#exampleModal" data-toggle="modal">{{producto.descripcion}} - {{producto.categoria}}</a>
+                    <br>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                Cantidad: {{producto.cantidadDisponible}}
+                            </div>
+                            <div class="col-sm">
+                                Ref: {{producto.idProducto}}
+                            </div>
+                            <div class="col-sm">
+                                Precio: {{producto.precio}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Información de cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #formProducto="ngForm" class="col-lg-12" id="form-producto" (ngSubmit)="onSubmit()">
+                                <label>
+                                    Nombre
+                                    <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-warning">es
+                                        necesario</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Nombre" #nombre="ngModel"
+                                    name="nombre" [(ngModel)]="cliente.nombre" required>
+                                <label>Fecha de nacimiento
+                                    <span *ngIf="!fechaNac.valid && fechaNac.touched" class="badge badge-warning">es
+                                        necesario</span>
+                                </label>
+                                <input type="date" class="form-control" placeholder="Fecha de nacimiento"
+                                    #fechaNac="ngModel" name="fechaNac" [(ngModel)]="cliente.fechaNac" required>
+                                <label>Dirección
+                                    <span *ngIf="!direcc.valid && direcc.touched" class="badge badge-warning">es
+                                        necesario</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Dirección" #direcc="ngModel"
+                                    name="direcc" [(ngModel)]="cliente.direcc" required>
+                                <label for="inputState">Ciudad</label>
+                                <select id="inputState" class="form-control" #ciudad="ngModel" name="ciudad"
+                                    [(ngModel)]="cliente.ciudad">
+                                    <option selected>Medellín</option>
+                                    <option>Bogotá</option>
+                                    <option>Calí</option>
+                                    <option>Barranquilla</option>
+                                    <option>Pasto</option>
+                                    <option>Armenia</option>
+                                </select>
+                                <br>
+                                <label> <strong>Selecciona el archivo</strong></label>
+                                <input type="file" class="btn btn-succ" accept="application/pdf" #file="ngModel"
+                                    name="file" [(ngModel)]="cliente.file"><br>
+                                <small>
+                                    <div class="alert alert-warning" role="alert">
+                                        Nota: Solo puedes subir archivos maximo hasta 1MB
+                                    </div>
+                                </small>
+                                <hr>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <small>Tu articulo que estas comprando es:
+                                                <b>{{producto.descripcion}}</b>
+                                            </small>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="{{producto.miniatura}}" alt="Imagen producto {{i}}">
+                                        </div>
+                                    </div>
+                                    <!-- table -->
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Fecha</th>
+                                                <th>Dirección</th>
+                                                <th>Ciudad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="cliente">
+                                            <td>
+                                                {{cliente.nombre}}</td>
+                                            <td>{{cliente.fechaNac}}</td>
+                                            <td>{{cliente.direcc}}</td>
+                                            <td>{{cliente.ciudad}}</td>
+                                        </tbody>
+                                    </table>
+                                    <!-- end table -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        [disabled]="!formProducto.form.valid">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal -->
+        </div>
+    </div>
+</section>
