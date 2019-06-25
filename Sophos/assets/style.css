@@ -1,0 +1,100 @@
+a:focus, a:hover{
+color: #2acdcd !important;
+-webkit-transition: .4s;
+-o-transition: .4s;
+transition: .4s;
+text-decoration: none!important;
+font-size: 40px;
+}
+
+.container p{
+text-align: center;
+display: inline-block;
+}
+
+.categorias .titulo h1{
+font-size: 60px;
+text-align: center;
+margin-top: 0px;
+margin-bottom: 5px;
+color: #000000;
+}
+
+.categorias .titulo .divider {
+width: 60%;
+border-top: 5px solid rgb(21, 158, 45);
+margin: 0 auto;
+}
+
+.wrapper {
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+margin-top: 80px;
+}
+
+.right {float: center !important;}
+
+/* Image zoom on hover + Overlay colour */
+.parent {
+height: 500px; /*30 */
+width: 500px; /*45 */
+margin: 50px; /*20 */
+border:  1px solid #bbbbbb;
+border-radius: 10px;
+overflow: hidden;
+position: relative;
+float: center;
+display: inline-block;
+cursor: pointer;
+}
+
+.child {
+height: 500px;
+width: 500px;
+background-size: cover;
+background-repeat: no-repeat;
+-webkit-transition: all .8s;
+-moz-transition: all .8s;
+-o-transition: all .8s;
+transition: all .8s;
+}
+
+a {
+display: none;
+font-size: 35px;
+-webkit-transition: all .3s;
+-moz-transition: all .3s;
+-o-transition: all .3s;
+transition: all .3s;
+color: #ffffff !important;
+font-family: ¿'Lato', Arial sans-serif;
+text-align: center;
+margin: auto;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+height: 50px;
+cursor: pointer;
+}
+
+.parent:hover .child:before, .parent:focus .child:before {
+display: inline-block;
+}
+
+.parent:hover a, .parent:focus a {
+display: inline-block;
+}
+
+.child:before {
+content: "";
+display: none;
+height: 100%;
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+background-color: rgba(88, 88, 88, 0.75);
+}
