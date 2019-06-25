@@ -10,6 +10,7 @@ import { routing, appRoutingProviders } from './app.routing'
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product.component';
 import { FailComponent } from './components/fail.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
